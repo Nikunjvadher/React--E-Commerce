@@ -1,7 +1,7 @@
 import React from 'react'
 import App from '../Navbar/Navbar.css'
-import { Mail, Search, ShoppingCartOutlined } from '@material-ui/icons'
-import { Badge, Input } from '@material-ui/core'
+import { Search, ShoppingCartOutlined } from '@material-ui/icons'
+import { Badge } from '@material-ui/core'
 
 
 
