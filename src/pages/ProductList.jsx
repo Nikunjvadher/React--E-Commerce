@@ -5,6 +5,7 @@ import Announcement from '../components/Announcement'
 import Products from '../components/Products'
 import NewsLetter from '../components/NewsLetter'
 import Footer from '../components/Footer'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
 
@@ -21,24 +22,43 @@ const Filter = styled.div`
   display: flex;
   align-items: center;
   gap: 1em;
+  ${mobile({
+      // width: "0 20px",
+      display:'flex',
+      flexDirection:'column',
+      alignItems:'flex-start',
+      width:'100%',
+      gap: '0'
+
+  })}
+  /* width: 100%; */
 `
 
 const FilterText = styled.span`
   font-size: 20px;
   font-weight: 600;
+  margin-right: 0;
+  flex: 6;
+  ${mobile({
+      fontSize: "18px",
+      marginRight:'0'
+    })}
 `
 
 const Select = styled.select`
   padding: 10px;
   /* margin-right: 20px; */
+  width: 100%;
+  flex: 2;
+
 `
 const Option = styled.option``
 
 const ProductList = () => {
   return (
     <Container>
-      <Announcement />
       <Navbar />
+      <Announcement />
       <Title>Dresses</Title>
       <FilterContainer>
         <Filter>

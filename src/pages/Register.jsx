@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { mobile } from "../responsive"
 
 const Container = styled.div`
     width: 100vw;
@@ -13,9 +14,13 @@ const Container = styled.div`
     justify-content: center;
 `
 const Wrapper = styled.div`
-    width: 40%;
+    width: 65%;
     padding: 20px;
     background-color: #e6dfdf;
+    ${mobile({
+      width: "70%",
+    })}
+
 `
 const Title = styled.h1`
     font-size: 24px;
@@ -40,6 +45,12 @@ const Agreement = styled.span`
     font-size: 12px;
     
 `
+const BtnDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+`
 const Button = styled.button`
     width: 40%;
     border: none;
@@ -47,6 +58,10 @@ const Button = styled.button`
     background-color: teal;
     color: white;
     cursor: pointer;
+
+    &:hover{
+        
+    }
 `
 
 
@@ -66,7 +81,9 @@ const Register = () => {
                 <Agreement>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur ratione molestiae, aliquam aspernatur nobis officiis nihil vel enim quibusdam iste!
                 </Agreement>
-                <Button>CREATE</Button>
+                <BtnDiv>s
+                    <Button>CREATE</Button>
+                </BtnDiv>
             </Form>
         </Wrapper>
     </Container>
