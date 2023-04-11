@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { mobile } from "../responsive"
 
@@ -12,8 +13,8 @@ const Image = styled.img`
     height: 100%;
     object-fit: cover;
     ${mobile({
-      height: "30vh",
-    })}
+    height: "30vh",
+})}
 `
 const Info = styled.div`
     position: absolute;
@@ -30,7 +31,7 @@ const Info = styled.div`
 const Title = styled.h1`
     color: white;
     margin-bottom: 20px;
-` 
+`
 const Button = styled.button`
     border: none;
     padding: 10px;
@@ -38,19 +39,21 @@ const Button = styled.button`
     color: gray;
     cursor: pointer;
     font-weight: 600;
-` 
+`
 
-const CategoriItem = ({item}) => {
-  return (
-    <Container>
-        <Image src={item.img}/>
-        <Info>
-            <Title>{item.title}</Title>
-            <Button>Shop Now</Button>
-        </Info>
+const CategoriItem = ({ item }) => {
+    return (
+        <Container>
+            <Link to={`/products/${item.categories}`}>
+                <Image src={item.img} />
+                <Info>
+                    <Title>{item.title}</Title>
+                    <Button>Shop Now</Button>
+                </Info>
+            </Link>
 
-    </Container>
-  )
+        </Container>
+    )
 }
 
 export default CategoriItem
