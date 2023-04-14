@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Routes, redirect } from 'react-router-dom'
+import Success from "./pages/Success";
 
 const App = () => {
   const user = true;
@@ -19,6 +20,7 @@ const App = () => {
         <Route excat path="/login" element={user ? redirect("/register") : <Login />} />
         {/* <Route excat path="/login" element={<Login/>}/> */}
         <Route excat path="/register" element={<Register />} />
+        <Route excat path="/success" element={<Success />} />
       </Routes>
     </Router>
   )

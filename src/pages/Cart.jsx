@@ -1,5 +1,4 @@
 import { Add, Remove } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
@@ -7,18 +6,15 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
+import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethod";
 import { useNavigate } from 'react-router-dom'
 const KEY = process.env.REACT_APP_STRIPE;
 
-const Container = styled.div`
-
-`;
+const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({
-    padding: "10px",
-})}
+  ${mobile({ padding: "10px" })}
 `;
 const Title = styled.h1`
   font-weight: 300;
@@ -45,7 +41,6 @@ const TopTexts = styled.div`
     display: "none",
 })}
 `;
-
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
@@ -154,10 +149,9 @@ const Summary = styled.div`
 
 const SummaryTitle = styled.h1`
     font-weight: 200;
-
-`
+`;
 const SummaryItem = styled.div`
-    margin: 30px 0;
+    margin: 30px 0px;
     display: flex;
     justify-content: space-between;
     font-weight: ${props => props.type === "Total" && 600};
@@ -169,14 +163,14 @@ const SummaryItemText = styled.span`
 `
 const SummaryItemPrice = styled.span`
 
-`
-const SummaryButton = styled.button`
-    width: 100%;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-`
+// `
+// const SummaryButton = styled.button`
+//     width: 100%;
+//     padding: 10px;
+//     background-color: black;
+//     color: white;
+//     font-weight: 600;
+// `
 
 
 const Cart = () => {
@@ -189,21 +183,24 @@ const Cart = () => {
 
     const onToken = (token) => {
         setStripeToken(token);
-    }
-    // console.log(stripeToken)
+    };
 
     useEffect(() => {
         const makeReq = async () => {
             try {
-                const response = await userRequest("/checkout/payment", {
-                    tokenId: stripeToken,
-                    amount: cart.total * 100,
-                })
-                navigate('/success' , {data:response.data})
+                const response = await userRequest.post("/checkout/payment", {
+                    tokenId: stripeToken.id,
+                    amount: 500,
+                    // amount: cart.total * 100,
+                });
+                navigate("/success", {
+                    stripeData: response.data,
+                    products: cart,
+                });
             } catch (error) { }
-        }
-        makeReq();
-    }, [stripeToken , cart.total,navigate])
+        };
+        stripeToken && makeReq();
+    }, [stripeToken, cart , navigate])
     return (
         <Container>
             <Navbar />
@@ -266,7 +263,6 @@ const Cart = () => {
                                 CHECKOUT NOW
                             </button>
                         </StripeCheckout>
-                        {/* <SummaryButton>CHECKOUT NOW</SummaryButton> */}
                     </Summary>
                 </Bottom>
             </Wrapper>

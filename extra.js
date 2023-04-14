@@ -177,8 +177,7 @@ const Cart = () => {
         });
         history.push("/success", {
           stripeData: res.data,
-          products: cart,
-        });
+          products: cart, });
       } catch {}
     };
     stripeToken && makeRequest();
